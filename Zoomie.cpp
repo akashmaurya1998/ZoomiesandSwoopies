@@ -1,9 +1,13 @@
 #include "Zoomie.h"
+#include "World.h"
 #include <cstdlib> // for rand()
 
-Zoomie::Zoomie(int posX, int posY) : Organism(posX, posY), breedTime(3) {}
+Zoomie::Zoomie(int posX, int posY, World* world) : Organism(posX, posY), world(world), breedTime(3) {}
 
 void Zoomie::move() {
+    int oldX = x;
+    int oldY = y;
+
     int direction = rand() % 4; // 0: up, 1: down, 2: left, 3: right
     switch (direction) {
         case 0: // up
@@ -19,6 +23,11 @@ void Zoomie::move() {
             if (x < 29) x++;
             break;
     }
+
+    // Update the position in the world grid
+    world->removeOrganism(this, oldX, oldY);
+    world->addOrganism(this, x, y);
+
     stepsSurvived++;
 }
 

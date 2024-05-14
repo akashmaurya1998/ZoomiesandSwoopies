@@ -12,7 +12,9 @@ World::~World() {
     // Deallocate memory for organisms in the grid
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
-            delete grid[i][j];
+            if (grid[i][j] != nullptr) {
+                delete grid[i][j];
+            }
         }
     }
 }
@@ -25,6 +27,15 @@ void World::addOrganism(Organism* organism, int x, int y) {
         std::cout << "Invalid position. Organism not added." << std::endl;
     }
 }
+
+void World::removeOrganism(Organism* organism, int x, int y) {
+    if (x >= 0 && x < size && y >= 0 && y < size && grid[x][y] == organism) {
+        grid[x][y] = nullptr;
+    } else {
+        std::cout << "Invalid position or organism not found. Organism not removed." << std::endl;
+    }
+}
+
 
 void World::moveSwoopies() {
     // Move all Swoopies in the grid
@@ -68,4 +79,8 @@ void World::display() const {
 
 int World::getSize() const {
     return size;
+}
+
+void World::updatePositions() {
+
 }

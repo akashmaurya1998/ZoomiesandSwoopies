@@ -16,12 +16,12 @@ int main() {
     for (int i = 0; i < 10; ++i) {
         int x = std::rand() % 30; // Random x-coordinate
         int y = std::rand() % 30; // Random y-coordinate
-        world.addOrganism(new Zoomie(x, y), x, y);
+        world.addOrganism(new Zoomie(x, y, &world), x, y);
     }
     for (int i = 0; i < 5; ++i) {
         int x = std::rand() % 30; // Random x-coordinate
         int y = std::rand() % 30; // Random y-coordinate
-        world.addOrganism(new Swoopie(x, y), x, y);
+        world.addOrganism(new Swoopie(x, y, &world), x, y);
     }
 
     world.display();

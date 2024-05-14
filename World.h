@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Organism.h"
+#include "Zoomie.h"
 
 class World {
 private:
@@ -14,10 +15,14 @@ public:
     ~World();
 
     void addOrganism(Organism* organism, int x, int y);
+    void removeOrganism(Organism* organism, int x, int y);
     void moveSwoopies();
     void moveZoomies();
     void display() const;
     int getSize() const;
+
+    void updatePositions();
+
 };
 
 #endif // WORLD_H
