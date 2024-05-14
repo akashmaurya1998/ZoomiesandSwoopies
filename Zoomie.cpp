@@ -1,6 +1,6 @@
 #include "Zoomie.h"
 #include "World.h"
-#include <cstdlib> // for rand()
+#include <cstdlib>
 
 Zoomie::Zoomie(int posX, int posY, World* world) : Organism(posX, posY), world(world), breedTime(3) {}
 
@@ -33,7 +33,16 @@ void Zoomie::move() {
 
 void Zoomie::breed() {
     if (stepsSurvived >= breedTime) {
-        // breed if enough time has passed
-        // code for creating a new Zoomie in an adjacent empty cell
+        // Try to breed into an adjacent empty cell
+        if (world->isCellEmpty(x, y - 1)) {
+            world->addOrganism(new Zoomie(x, y - 1, world), x, y - 1);
+        } else if (world->isCellEmpty(x, y + 1)) {
+            world->addOrganism(new Zoomie(x, y + 1, world), x, y + 1);
+        } else if (world->isCellEmpty(x - 1, y)) {
+            world->addOrganism(new Zoomie(x - 1, y, world), x - 1, y);
+        } else if (world->isCellEmpty(x + 1, y)) {
+            world->addOrganism(new Zoomie(x + 1, y, world), x + 1, y);
+        }
+        stepsSurvived = 0; // Reset the breeding counter
     }
 }

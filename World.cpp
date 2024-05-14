@@ -1,7 +1,7 @@
 #include <iostream>
 #include "World.h"
-#include "Zoomie.h" // Include the header file for Zoomie
-#include "Swoopie.h" // Include the header file for Swoopie
+#include "Zoomie.h"
+#include "Swoopie.h"
 
 World::World(int gridSize) : size(gridSize) {
     // Initialize the grid with nullptrs
@@ -36,6 +36,20 @@ void World::removeOrganism(Organism* organism, int x, int y) {
     }
 }
 
+bool World::isCellEmpty(int x, int y) const {
+    return x >= 0 && x < size && y >= 0 && y < size && grid[x][y] == nullptr;
+}
+
+bool World::isCellZoomie(int x, int y) const {
+    return x >= 0 && x < size && y >= 0 && y < size && dynamic_cast<Zoomie*>(grid[x][y]) != nullptr;
+}
+
+Organism* World::getOrganismAt(int x, int y) const {
+    if (x >= 0 && x < size && y >= 0 && y < size) {
+        return grid[x][y];
+    }
+    return nullptr;
+}
 
 void World::moveSwoopies() {
     // Move all Swoopies in the grid
@@ -75,12 +89,4 @@ void World::display() const {
         }
         std::cout << std::endl;
     }
-}
-
-int World::getSize() const {
-    return size;
-}
-
-void World::updatePositions() {
-
 }

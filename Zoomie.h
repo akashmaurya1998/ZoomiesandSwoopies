@@ -9,6 +9,7 @@ class World;
 class Zoomie : public Organism {
 private:
     int breedTime; // time steps required for breeding
+    World* world;
 
 public:
     Zoomie(int posX, int posY, World* world);
@@ -16,11 +17,6 @@ public:
 
     void move() override;
     void breed() override;
-
-    void updatePosition();
-
-private:
-    World* world;
 };
 
-#endif // ZOOMIE_H
+#endif

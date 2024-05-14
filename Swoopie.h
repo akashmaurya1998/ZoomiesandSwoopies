@@ -8,8 +8,10 @@ class World;
 
 class Swoopie : public Organism {
 private:
-    int breedTime; // time steps required for breeding
-    int starveTime; // time steps after which Swoopie starves if it hasn't eaten
+    World *world;
+    int breedTime;
+    int starveTime;
+    int lastEaten;
 
 public:
     Swoopie(int posX, int posY, World* world);
@@ -19,8 +21,6 @@ public:
     void breed() override;
     void eatZoomie();
     void starve();
-
-    World *world;
 };
 
-#endif // SWOOPIE_H
+#endif

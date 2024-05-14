@@ -19,10 +19,12 @@ public:
     void moveSwoopies();
     void moveZoomies();
     void display() const;
-    int getSize() const;
 
-    void updatePositions();
+    bool isCellEmpty(int x, int y) const;
 
+    bool isCellZoomie(int x, int y) const;
+
+    Organism *getOrganismAt(int x, int y) const;
 };
 
-#endif // WORLD_H
+#endif

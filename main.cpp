@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstdlib> // for rand()
-#include <ctime> // for srand()
+#include <cstdlib>
+#include <ctime>
 #include "World.h"
 #include "Zoomie.h"
 #include "Swoopie.h"
@@ -24,7 +24,7 @@ int main() {
         world.addOrganism(new Swoopie(x, y, &world), x, y);
     }
 
-    world.display();
+    world.display(); // Initial World representation
 
     // Simulate movement and behavior over multiple time steps
     for (int step = 0; step < 10; ++step) {
@@ -35,12 +35,7 @@ int main() {
         world.moveZoomies();
         // Display current state of the world
         world.display();
-        // Pause for a moment (optional)
-        // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
-
-    // Clean up memory
-    // No need to explicitly delete organisms, as World's destructor takes care of it
 
     return 0;
 }
