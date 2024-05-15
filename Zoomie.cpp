@@ -14,13 +14,13 @@ void Zoomie::move() {
             if (y > 0) y--;
             break;
         case 1: // down
-            if (y < 29) y++;
+            if (y < world->getSize() - 1) y++;
             break;
         case 2: // left
             if (x > 0) x--;
             break;
         case 3: // right
-            if (x < 29) x++;
+            if (x < world->getSize() - 1) x++;
             break;
     }
 

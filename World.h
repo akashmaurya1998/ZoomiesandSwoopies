@@ -25,6 +25,8 @@ public:
     bool isCellZoomie(int x, int y) const;
 
     Organism *getOrganismAt(int x, int y) const;
+
+    int getSize();
 };
 
 #endif

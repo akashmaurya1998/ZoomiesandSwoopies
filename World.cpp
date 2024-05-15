@@ -90,3 +90,7 @@ void World::display() const {
         std::cout << std::endl;
     }
 }
+
+int World::getSize() {
+    return 0;
+}
