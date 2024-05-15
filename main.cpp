@@ -28,6 +28,27 @@ int main() {
 
     // Simulate movement and behavior over multiple time steps
     for (int step = 0; step < 10; ++step) {
+
+        char input;
+        bool validInput = false;
+        while (!validInput) {
+            std::cout << "Do you want to continue to the next step? (y/n): ";
+            std::cin >> input;
+
+            switch (input) {
+                case 'y':
+                case 'Y':
+                    validInput = true;
+                    break;
+                case 'n':
+                case 'N':
+                    std::cout << "Exiting simulation..." << std::endl;
+                    return 0;
+                default:
+                    std::cout << "Invalid input. Please enter 'y' or 'n'." << std::endl;
+            }
+        }
+
         std::cout << "Time Step: " << step << std::endl;
         // Move Swoopies first
         world.moveSwoopies();
